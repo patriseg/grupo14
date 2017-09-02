@@ -230,9 +230,7 @@ object luisAlberto {
 	method cancionMasLarga(){
 		return self.albumes().filter({unAlbum=>unAlbum.cancionLarguisima()})
 	}
-	method contienePalabra(palabra){
-		return self.albumes().filter({unAlbum => unAlbum.albumContienePalabra(palabra)})
-	}
+	method contienePalabra(palabra) = self.albumes().filter({unAlbum => unAlbum.albumContienePalabra(palabra)})
 }
 class Album{
 	var titulo
@@ -241,6 +239,7 @@ class Album{
 	
 	var cantidadAVender
 	var cantidadVendida
+	constructor(){}
 	constructor(unTitulo,_day,_month,_year,unaCantidadAVender,unaCantidadVendida){
 		titulo=unTitulo
 		fecha = fecha.initialize(_day, _month, _year)
@@ -304,20 +303,4 @@ class Cancion {
 	method esCorta(){
 		return self.duracion() < 180
 	}
-}
-object laFamilia {
-	const letra = "Quiero brindar por mi gente sencilla,por el amor brindo por la familia "
-	const duracion = 264
-
-	method duracion()= duracion
-	method letra()= letra
-}
-object cisne { 
-	const letra = "Hoy el viento se abrio quedo vacio el aire una vez mas y el manantial broto
-	 y nadie esta aqui y 
-	puedo ver que solo estallan las hojas al brillar "
-	const duracion = 312
-	
-	method duracion()= duracion
-	method letra()= letra
 }
