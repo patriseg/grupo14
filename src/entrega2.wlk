@@ -5,6 +5,7 @@ class Musico {
 	constructor(unaHabilidad){
 		habilidad=unaHabilidad
 	}
+	// hola marola
 	method albumes() = albumes
 	method agregaAlbumes(unosAlbumes){
 		self.albumes().addAll(unosAlbumes)
