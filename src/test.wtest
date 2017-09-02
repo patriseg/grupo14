@@ -1,100 +1,122 @@
-import entrega1.*
+import entrega2.*
 
-test "joaquin canta en el grupo pimpinela cual es su habilidad" {
-	assert.equals(joaquin.habilidad(),25)
-}
-
-test "joaquin deja el grupo cual es su habilidad"{
-	joaquin.tocaSolo(true)
-	assert.equals(joaquin.habilidad(),20)
-}
-
-test "lucia canta en el grupo pimpinela,cual es su habilidad"{
-	assert.equals(lucia.habilidad(),50)
-}
-
-test "lucia deja el grupo cual es su habilidad"{
-	lucia.tocaSolo(true)
-	assert.equals(lucia.habilidad(),70)
-}
-
-test "luis Alberto toca con la Fender, cual es su habilidad?"{
-	luisAlberto.usarGuitarra("Fender")
-	assert.equals(luisAlberto.habilidad(),80)
-}
-
-test "luis Alberto toca con la Gibson sana, cual es la habilidad?"{
-	luisAlberto.usarGuitarra("Gibson")
-	assert.equals(luisAlberto.habilidad(),100)
-}
-
-test "Alguien trata mal a la Gibson y no esta sana, luis Alberto la toca, cual es su habilidad?"{
-	luisAlberto.romperGibson()
-	luisAlberto.usarGuitarra("Gibson")
-	assert.equals(luisAlberto.habilidad(),40)
-}
-
-test "joaquin interpreta bien la cancion laFamilia"{
-	assert.that(joaquin.interpretaBien(laFamilia).negate())
-}
-
-test "joaquin interpreta bien la cancion Cisne"{
-	assert.that(joaquin.interpretaBien(cisne))
-}
-
-test "lucia interpreta bien la cancion La Familia"{
-	assert.that(lucia.interpretaBien(laFamilia))	
-}
-
-test "lucia interpreta bien la cancion Cisne"{
-	assert.that(lucia.interpretaBien(cisne).negate())
-}
-
-test "luis alberto interpreta bien la cancion La Familia"{
-	assert.that(luisAlberto.interpretaBien(laFamilia))
-}
-
-test "luis alberto interpreta bien la cancion cisne"{
-	assert.that(luisAlberto.interpretaBien(cisne))
-}
-
-test "cuanto cobra joaquin por la presentacion en el luna park?"{
-	assert.equals(joaquin.costoPresentacion(),50)
-}
-
-test "joaquin actua solo en la trastienda, cuanto cobra?"{
-	joaquin.tocaSolo(true)
-	assert.equals(joaquin.costoPresentacion(),100)
-}
-
-test "cual es la capacidad de La Trastienda para el 5 de agosto de 2017"{
-	assert.equals(laTrastienda.capacidad(05,08,2017),700)
-}
-
-test "cual es la capacidad de La Trastienda para el 8 de agosto de 2017"{
-	assert.equals(laTrastienda.capacidad(08,08,2017),400)
-}
-
-test "cuanto cobra lucia por la presentacion en el Luna Park"{
-	assert.equals(lucia.costoPresentacion(lunaPark),500)
-}
-
-test "cuanto cobra lucia por la presentacion en La Trastienda"{
-	assert.equals(lucia.costoPresentacion(laTrastienda),400)
-}
-
-test "cuanto cobra luis alberto por la presentacion en Luna Park"{
-	assert.equals(luisAlberto.costoPresentacion(04,2017),1000)
-}
-
-test "cuanto cobra luis alberto por la presentacion en La Trastienda"{
-	assert.equals(luisAlberto.costoPresentacion(10,2017),1200)
-}
-
-test "costo de presentacion en el luna park"{
-	assert.equals(joaquin.costoPresentacion() + lucia.costoPresentacion(lunaPark) + luisAlberto.costoPresentacion(04,2017),1550)
-}
-
-test "costo de presentacion en la trastienda"{
-	assert.equals(joaquin.costoPresentacion() + lucia.costoPresentacion(laTrastienda) + luisAlberto.costoPresentacion(11,2017),1650)
+describe "test tp parte 2"{
+	
+		const joaquin = new Musico(20)
+		
+		const kike = new Musico(60)
+		
+		const lucia = new Musico(70)
+		
+		const luisAlberto = new Musico(0)
+		
+		const soledad = new Musico(55)
+		
+		const especialLaFamilia = new Album ("Especial La Familia",17, 06,1992, 100000,89000)
+		
+		const laSole = new Album ("La Sole", 04,02,2005, 200000, 130000)
+		
+		const paraLosArboles = new Album ("Para los arboles", 31,03,2003, 50000, 49000)
+		
+		const justCrisantemo = new Album ("Just Crisantemo", 05,12,2007, 50000, 49000)
+		
+		const laFamilia = new Cancion ("La Familia", "Quiero brindar por mi gente sencilla, por el amor brindo por la familia", 264)
+		
+		const eres = new Cancion ("Eres", "Eres lo mejor que me paso en la vida, no tengo duda, no habra mas nada despues de ti. Eres lo que le dio brillo al dia a dia,
+		y asi sera por siempre, no cambiara, hasta el final de mis dias", 145)
+		
+		const corazonAmericano = new Cancion ("Corazon Americano", "Canta corazon, canta mas alto, que tu pena al fin se va marchando, el nuevo milenio ha de encontrarnos, 
+		junto corazon, como soñamos", 154)
+		
+		const cisne = new Cancion ("Cisne", "Hoy el viento se abrio quedo vacio el aire una vez mas y el manantial broto y nadie esta aqui y puedo ver que solo estallan
+		 las hojas al brillar", 312)
+		
+		const almaDeDiamante = new Cancion ("Alma de Diamante", "Ven a mi con tu dulce luz alma de diamante. Y aunque el sol se nuble despues sos el alma de diamante. 
+		cielo o piel silencio o verdad sos alma de diamante. Por eso ven asi con la humanidad alma de diamante", 216)
+		
+		const crisantemo = new Cancion ("Crisantemo", "Tocame junto a esta pared, yo quede por aqui... cuando no hubo mas luz... quiero mirar a traves de mi piel... 
+		Crisantemo, que se abrio... encuentra el camino hacia el cielo", 175)
+		
+		fixture {
+		
+		especialLaFamilia.agregaCancion([laFamilia])
+		
+		laSole.agregaCancion([eres,corazonAmericano])
+		
+		paraLosArboles.agregaCancion([cisne,almaDeDiamante])
+		
+		justCrisantemo.agregaCancion([crisantemo])
+		
+		joaquin.agregaAlbumes([especialLaFamilia])
+		
+		soledad.agregaAlbumes([laSole])
+		
+		luisAlberto.agregaAlbumes([paraLosArboles, justCrisantemo])
+		
+		}
+	
+	test "saber si la cancion Crisantemo es corta"{
+		assert.that(crisantemo.esCorta())
+	}
+	
+	test "saber si la cancion Alma de diamante es corta"{
+		assert.notThat(almaDeDiamante.esCorta())
+	}
+	
+	test "soledad es minimalista"{
+		assert.that (soledad.minimalista())
+	}
+	
+	test "luis alberto es minimalista"{
+		assert.notThat (luisAlberto.minimalista())
+	}
+	
+	test "joaquin es minimalista"{
+		assert.notThat (joaquin.minimalista())
+	}
+	
+	test "Qué canciones de Luis Alberto contienen cielo"{
+		assert.equals (luisAlberto.contienePalabra("cielo"),[crisantemo, almaDeDiamante])
+	}
+	
+	test "Qué canciones de Luis Alberto contienen pujante"{
+		assert.equals (luisAlberto.contienePalabra("pujante"),[])
+	}
+	
+	test "cuanto dura la obra de kike"{
+		assert.equals (kike.cuantoDuraLaObra(), 0)
+	}
+	
+	test "cuanto dura la obra de Soledad"{
+		assert.equals (soledad.cuantoDuraLaObra(), 299)
+	}
+	
+	test "cuanto dura la obra de Luis Alberto"{
+		assert.equals (luisAlberto.cuantoDuraLaObra(), 703)
+	}
+	
+	test "cancion mas larga de Para los arboles"{
+		assert.that (luisAlberto.cancionMasLarga())
+	}
+	
+	test "cancion mas larga de La Sole"{
+		assert.that (soledad.cancionMasLarga())
+	}
+	
+	test "cancion mas larga de Especial La Familia"{
+		assert.that (joaquin.cancionMasLarga())
+	}
+	
+	test "luis alberto la pego"{
+		assert.that(luisAlberto.laPego())
+	}
+	
+	test "soledad la pego"{
+		assert.notThat(soledad.laPego())
+	}
+	
+	test "joaquin la pego"{
+		assert.that (joaquin.laPego())
+	}
+	
 }
