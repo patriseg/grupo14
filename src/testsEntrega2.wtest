@@ -1,0 +1,116 @@
+import Musico.*
+import Cancion.*
+import Album.*
+import Lugar.*
+
+
+describe "test tp parte 2"{
+	
+	const joaquin = new Musico(20)
+	
+	const kike = new Musico(60)
+	
+	const lucia = new Musico(70)
+	
+	const luisAlberto = new Musico(0)
+	
+	const soledad = new Musico(55)
+	
+	const especialLaFamilia = new Album ("Especial La Familia",17, 06,1992, 100000,89000)
+	
+	const laSole = new Album ("La Sole", 04,02,2005, 200000, 130000)
+	
+	const paraLosArboles = new Album ("Para los arboles", 31,03,2003, 50000, 49000)
+	
+	const justCrisantemo = new Album ("Just Crisantemo", 05,12,2007, 50000, 49000)
+	
+	const laFamilia = new Cancion ("La Familia", 264,"Quiero brindar por mi gente sencilla, por el amor brindo por la familia")
+	const cisne = new Cancion("Cisne",312,"Hoy el viento se abrio quedo vacio el aire una vez mas y el manantial broto y nadie esta aqui y puedo ver que solo estallan las hojas al brillar ")
+	const eres = new Cancion ("Eres", 145,"Eres lo mejor que me paso en la vida, no tengo duda, no habra mas nada despues de ti. Eres lo que le dio brillo al dia a dia,y asi sera por siempre, no cambiara, hasta el final de mis dias")
+	const corazonAmericano = new Cancion ("Corazon Americano", 154,"Canta corazon, canta mas alto, que tu pena al fin se va marchando, el nuevo milenio ha de encontrarnos, junto corazon, como soniamos")
+	const almaDeDiamante = new Cancion ("Alma de Diamante",216, "Ven a mi con tu dulce luz alma de diamante. Y aunque el sol se nuble despues sos el alma de diamante. cielo o piel silencio o verdad sos alma de diamante. Por eso ven asi con la humanidad alma de diamante")
+	const crisantemo = new Cancion ("Crisantemo",175, "Tocame junto a esta pared, yo quede por aqui... cuando no hubo mas luz... quiero mirar a traves de mi piel... Crisantemo, que se abrio... encuentra el camino hacia el cielo")
+	
+	fixture {
+	
+		especialLaFamilia.agregaCancion(laFamilia)
+		
+		laSole.agregaCanciones([eres,corazonAmericano])
+		
+		paraLosArboles.agregaCanciones([cisne,almaDeDiamante])
+		
+		justCrisantemo.agregaCancion(crisantemo)
+		
+		joaquin.agregaAlbumes([especialLaFamilia])
+		
+		soledad.agregaAlbumes([laSole])
+		
+		luisAlberto.agregaAlbumes([paraLosArboles, justCrisantemo])
+	
+	}
+	
+	test "saber si la cancion Crisantemo es corta"{
+		assert.that(crisantemo.esCorta())
+	}
+	
+	test "saber si la cancion Alma de diamante es corta"{
+		assert.notThat(almaDeDiamante.esCorta())
+	}
+	
+	test "soledad es minimalista"{
+		assert.that (soledad.minimalista())
+	}
+	
+	test "luis alberto es minimalista"{
+		assert.notThat (luisAlberto.minimalista())
+	}
+	
+	test "joaquin es minimalista"{
+		assert.notThat (joaquin.minimalista())
+	}
+	
+	test "Qu� canciones de Luis Alberto contienen cielo"{
+		assert.equals (luisAlberto.contienePalabra("cielo"),[crisantemo, almaDeDiamante])
+	}
+	
+	test "Qu� canciones de Luis Alberto contienen pujante"{
+		assert.equals (luisAlberto.contienePalabra("pujante"),[])
+	}
+	
+	test "cuanto dura la obra de kike"{
+		assert.equals (kike.cuantoDuraLaObra(), 0)
+	}
+	
+	test "cuanto dura la obra de Soledad"{
+		assert.equals (soledad.cuantoDuraLaObra(), 299)
+	}
+	
+	test "cuanto dura la obra de Luis Alberto"{
+		assert.equals (luisAlberto.cuantoDuraLaObra(), 703)
+	}
+	
+	test "cancion mas larga de Para los arboles"{
+		assert.that (luisAlberto.cancionMasLarga())
+	}
+	
+	test "cancion mas larga de La Sole"{
+		assert.that (soledad.cancionMasLarga())
+	}
+	
+	test "cancion mas larga de Especial La Familia"{
+		assert.that (joaquin.cancionMasLarga())
+	}
+	
+	test "luis alberto la pego"{
+		assert.that(luisAlberto.laPego())
+	}
+	
+	test "soledad la pego"{
+		assert.notThat(soledad.laPego())
+	}
+	
+	test "joaquin la pego"{
+		assert.that (joaquin.laPego())
+	}
+	
+}
