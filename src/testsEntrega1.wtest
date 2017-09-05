@@ -1,11 +1,37 @@
-import entrega2.*
+import Musico.*
+import Cancion.*
+import Album.*
+import Lugar.*
 
 describe "Test de Entrega 1"{
-	const ble
+	var cisne
+	var laFamilia
+	var laTrastienda
+	var lunaPark
 	
+	var joaquin	
+	var lucia 
+	var luisAlberto 
+	
+
 	fixture {
-		ble = 5
-	}
+		
+		
+		
+		
+		joaquin = new Musico(20)
+		
+	 	lucia = new Musico(70)
+	 	
+	 	 luisAlberto = new Musico(0)
+	
+	
+		laTrastienda = new Lugar()
+		lunaPark = new Lugar()
+		cisne = new Cancion("Cisne",312,"Hoy el viento se abrio quedo vacio el aire una vez mas y el manantial broto y nadie esta aqui y puedo ver que solo estallan las hojas al brillar ")
+		laFamilia = new Cancion("La Familia", 264,"Quiero brindar por mi gente sencilla, por el amor brindo por la familia")
+		
+		}
 	
 	test "joaquin canta en el grupo pimpinela cual es su habilidad" {
 		assert.equals(joaquin.habilidad(), 25)
@@ -44,7 +70,7 @@ describe "Test de Entrega 1"{
 	}
 	
 	test "joaquin interpreta bien la cancion laFamilia" {
-		assert.that(joaquin.interpretaBien(laFamilia).negate())
+		assert.notThat(joaquin.interpretaBien(laFamilia))
 	}
 	
 	test "joaquin interpreta bien la cancion Cisne" {
@@ -56,7 +82,7 @@ describe "Test de Entrega 1"{
 	}
 	
 	test "lucia interpreta bien la cancion Cisne" {
-		assert.that(lucia.interpretaBien(cisne).negate())
+		assert.notThat(lucia.interpretaBien(cisne))
 	}
 	
 	test "luis alberto interpreta bien la cancion La Familia" {
@@ -110,5 +136,7 @@ describe "Test de Entrega 1"{
 		lucia.costoPresentacion(laTrastienda) +
 		luisAlberto.costoPresentacion(11, 2017), 1650)
 	}
-}
+	}
+
+
 

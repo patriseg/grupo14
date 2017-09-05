@@ -74,7 +74,7 @@ object luisAlberto {
 	}
 }
 
-object cisne {
+/*object cisne {
 	const letra =
 	"Hoy el viento se abrio quedo vacio el aire una vez mas y el manantial broto y nadie esta aqui y puedo ver que solo estallan las hojas al brillar "
 
@@ -119,4 +119,4 @@ object laTrastienda {
 	method concurrido() {
 		return ( capacidadPb + capacidadPrimerPiso ) > 5000
 	}
-}
+}*/
